@@ -12,12 +12,10 @@ document.addEventListener("DOMContentLoaded",function(){
            
             let letter = e.target;
             console.log(letter.textContent);
-            let square = document.querySelector('.squaresRow');
+            let square = document.getElementById('1');
             console.log(square);
-            square.firstChild.textContent = letter.textContent;
-            
+            square.textContent = letter.textContent;
         })
-
     });
    
 })
@@ -28,18 +26,12 @@ function createGameBoard(){
 
     const board = document.getElementById('gameboard');
 
-    for(let i=0;i<6;i++){
-        const row = document.createElement('div');
-        row.classList.add('squaresRow');
-        for(j=0;j<5;j++){
+    for(let i=0;i<30;i++){
             const square = document.createElement('div');
             square.classList.add('square');
-
-            row.appendChild(square);
-        }
-        gameboard.appendChild(row);
+            square.setAttribute('id',i+1);
+            board.appendChild(square);
     }
-
 }
 
 function createKeyBoard(){
@@ -49,6 +41,8 @@ function createKeyBoard(){
         for (i=0;i<keyboardArray.length;i++){
             const key = document.createElement('button');
             key.classList.add('key');
+            //Assigning id same as keyvalue
+            key.setAttribute('id',`${keyboardArray[i]}`);
             key.textContent = keyboardArray[i];
             keyboard.appendChild(key);
         }

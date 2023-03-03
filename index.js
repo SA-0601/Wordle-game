@@ -1,7 +1,8 @@
 import { words } from "./words.js";
+const keyClickSound = new Audio("keyClickSound.mp3");
 let guessedwords = [[]];
 let availableSpace = 1;
-
+let avoidDeleteKey = 0;
 
     
 let word = words[Math.floor(Math.random() * words.length)];
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded",function(){
     
     key.forEach(element => {
         element.addEventListener('click',function(e){
-            
+            keyClickSound.play();
             let letter = e.target.textContent;
             if (letter === "del") {
                 deleteLetter();
@@ -44,6 +45,7 @@ function deleteLetter(){
 
     lastLetterEl.textContent = '';
     availableSpace -= 1;
+    avoidDeleteKey -=1;
 }
 
 function checkGuessWord(){
@@ -56,10 +58,7 @@ function checkGuessWord(){
 
     const currentWord = currentWordArr.join('');
     console.log(currentWord);
-    if(currentWord === word){
-        window.alert("congratulations")
-    }
-
+    
     if(!words.includes(currentWord)){
     
         alert('Word entered is not in list');
@@ -70,6 +69,7 @@ function checkGuessWord(){
     let index=availableSpace-5;
     
     for(let i=0;i<5;i++){
+        setTimeout(function() {
         const letterOnGrid = document.getElementById(index);
         console.log(letterOnGrid);
         let char = letterOnGrid.textContent;
@@ -82,10 +82,21 @@ function checkGuessWord(){
                 letterOnGrid.classList.add('yellow');
               } else
                 letterOnGrid.classList.add('gray');
-        index += 1;
-        console.log(char);
+                index += 1;
+                console.log(char);
+        }, i * 500);
+        avoidDeleteKey = 0;
         
     }
+
+    if(currentWord === word){
+        window.alert("Congratulations, You win the game");
+        const body = document.querySelector('body');
+        body.classList.add('fireworks');
+        
+        
+    }
+
     
 
     if(guessedwords.length === 6){
@@ -110,8 +121,11 @@ function updateGuessedWords(letter){
         const availableSpaceElement = document.getElementById(availableSpace);
         availableSpaceElement.textContent = letter;
         availableSpace += 1;
-    }
+        avoidDeleteKey +=1;
+        console.log(avoidDeleteKey);
         
+    }
+
 }
 
 // To create board which has 5*6 squares to fill in letters

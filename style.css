@@ -5,9 +5,11 @@
 }
 
 body{
+    background: var(bgColor);
     margin: 30px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 #title{
@@ -35,6 +37,7 @@ body{
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
+    position: relative;
 }
 
 
@@ -48,18 +51,37 @@ body{
 }
 
 .key{
-    width:40px;
-    height:20px;
-    border: 2px solid gray;
+    width:50px;
+    height:10px;
+    border: 2px solid gray;;
     border-radius: 5px;
     margin: 2px;
     font-size: 15px;
     font-weight: bold;
-    cursor: pointer;
-    padding:25px 12px 25px 12px;
+    cursor: grab;
+    padding:15px 5px 15px 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
 
+}
+.key:hover{
+    box-shadow: 2px 3px darkgrey;
+}
+
+
+.green{
+    
+    background-color: #6aaa64;
+}
+
+.gray{
+    
+    background-color: #787c7e;
+}
+
+.yellow{
+    
+    background-color: #c9b458;
 }

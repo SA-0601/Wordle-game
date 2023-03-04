@@ -6,17 +6,16 @@
 
 body{
     
-    margin: 30px;
+    margin: 10px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-image: url(https://i.pinimg.com/originals/69/b9/0e/69b90ed4e4087e02faaaccf33a843dfb.jpg);
-    background-color: #060047;
-    
+    background-image: url(./files/background.jpg);
     background-size: cover;
     background-position: center;
 }
 
 #title{
+    font-family:
     text-decoration: underline;
     font-size: 20px;
     color: #635985;
@@ -27,7 +26,7 @@ body{
     grid-template-columns: repeat(5,1fr);
     align-items: center;
     justify-content: center;
-    margin: 50px 600px;
+    margin: 20px 600px;
     
 
 }
@@ -47,15 +46,36 @@ body{
     background-color: white;
     box-shadow: 3px 4px orange;
 }
+#new{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
+    justify-content: center;
+    margin: 10px 700px;
+}
 
-
+#newgame,#rules{
+    width:90px;
+    height:10px;
+    border: 2px solid gray;;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: grab;
+    padding:15px 5px 15px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 3px orange;
+}
 
 #keyboard{
     display: grid;
     grid-template-columns: repeat(10,1fr);
     align-items: center;
     justify-content: center;
-    margin: 50px 500px;
+    margin: 10px 500px;
 }
 
 .key{
@@ -73,31 +93,38 @@ body{
     align-items: center;
     text-transform: capitalize;
     box-shadow: 2px 3px orange;
-    
-    
-
 }
+
 .key:hover{
     box-shadow: 2px 3px #40513B;
 }
+#newgame:hover{
+    box-shadow: 2px 3px #40513B;
+}
+#rules:hover{
+    box-shadow: 2px 3px #40513B;
+}
+
 
 .green{
     
     background-color: #6aaa64;
+    /* transition-delay: 1s; */
 }
 
 .gray{
-    
     background-color: #787c7e;
+    /* transition-delay: 1s; */
 }
 
 .yellow{
-    
     background-color: #c9b458;
+    /* transition-delay: 1s; */
 }
 
 .fireworks{
-    transition-delay: 2s;
-    background-image: url(https://media0.giphy.com/media/26tOZ42Mg6pbTUPHW/giphy.gif);
+    transition-delay: 3s;
+   background-size: cover;
+    background-image: url(./files/winstate.gif);
     
 }

@@ -5,16 +5,16 @@ const SoundGreen = new Audio("./files/SoundGreen.mp3");
 const SoundGrayOrange = new Audio("./files/SoundGrayOrange.mp3");
 
 //this is array for storing already guessed words
-let guessedwords = [[]];
+let currentWordArr = [];
 
 //this variable is to check on which space will next letter go
-let availableSpace = 1;
+let availSpace = 1;
 
 //avoidDeleteKey variable is to check for deletion before that particular row
 let avoidDeleteKey = 0;
 
 let word = words[Math.floor(Math.random() * words.length)];
-// let word = "throb";
+
 console.log(word);
 
 document.addEventListener("DOMContentLoaded",function() {
@@ -41,30 +41,26 @@ document.addEventListener("DOMContentLoaded",function() {
 );
 
 function deleteLetter() {
-  const currentWordArr = getCurrentWordArray();
+  
   const removedLetter = currentWordArr.pop();
-
-  guessedwords[guessedwords.length - 1] = currentWordArr;
-  const lastLetterEl = document.getElementById(availableSpace - 1);
+  const lastLetterEl = document.getElementById(availSpace - 1);
 
   // if we want to delete when nothing is there on row
   if (lastLetterEl === null || avoidDeleteKey === 0) {
     window.alert("No more letters to delete");
     return;
   } else lastLetterEl.textContent = "";
-  availableSpace -= 1;
+  availSpace -= 1;
   avoidDeleteKey -= 1;
-  
 }
 
 function checkGuessedWord() {
-  const currentWordArr = getCurrentWordArray();
+  
   console.log(currentWordArr);
   if (currentWordArr.length !== 5) {
     window.alert("Word should be of 5 letters");
     return;
   }
-
   const currentWord = currentWordArr.join("");
   console.log(currentWord);
 
@@ -74,7 +70,7 @@ function checkGuessedWord() {
   }
 
   // for adding colors to letters based on their presence
-  let index = availableSpace - 5;
+  let index = availSpace - 5;
 
   for (let i = 0; i < 5; i++) {
     setTimeout(function () {
@@ -92,44 +88,35 @@ function checkGuessedWord() {
         letterOnGrid.classList.add("gray");
         SoundGrayOrange.play();
       }
-
       index += 1;
       console.log(char);
     }, i * 700);
-
+   
     avoidDeleteKey = 0;
     console.log("while coloring change", +avoidDeleteKey);
   }
-
+  currentWordArr = [];
   if (currentWord === word) {
     const body = document.querySelector("body");
     body.classList.add("fireworks");
     setTimeout(function () {
       winSound.play();
     }, 3500);
+  }else if (availSpace === 31) {
+    setTimeout(function () {
+        window.alert(`You have no more guesses left, Word is ${word}`);
+      },3000);
+    
   }
-
-  if (guessedwords.length === 6) {
-    window.alert(`You have no more guesses left, Word is ${word}`);
-  }
-
-  guessedwords.push([]);
-  console.log(guessedwords);
-}
-
-function getCurrentWordArray() {
-  const numberOfGuessedWords = guessedwords.length;
-  return guessedwords[numberOfGuessedWords - 1];
 }
 
 function insertLetter(letter) {
-  const currentWordArr = getCurrentWordArray();
-
+  
   if (currentWordArr && currentWordArr.length < 5) {
     currentWordArr.push(letter);
-    const availableSpaceElement = document.getElementById(availableSpace);
-    availableSpaceElement.textContent = letter;
-    availableSpace += 1;
+    const availSpaceEl = document.getElementById(availSpace);
+    availSpaceEl.textContent = letter;
+    availSpace += 1;
     avoidDeleteKey += 1;
   }
 }
@@ -162,14 +149,14 @@ function createKeyBoard() {
 }
 
 //To Generate A New Game
-const newGamebtn = document.getElementById("newgame");
-newGamebtn.addEventListener("click", () => {
+const newgameBtn = document.getElementById("newgame");
+newgameBtn.addEventListener("click", () => {
   window.location.reload();
 });
 
 // To open the rules window
-const rulesbtn = document.getElementById("rules");
-rulesbtn.addEventListener("click", () => {
+const rulesBtn = document.getElementById("rules");
+rulesBtn.addEventListener("click", () => {
     window.open("./files/WordleRules.png", "myWindow", "width=532,height=478");
     myWindow.close(); 
 });

@@ -6,7 +6,7 @@
 
 body{
     
-    margin: 10px;
+    margin: 28px;
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-image: url(./files/background.jpg);
@@ -15,9 +15,9 @@ body{
 }
 
 #title{
-    font-family:
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: underline;
-    font-size: 20px;
+    font-size: 22px;
     color: #635985;
 }
 

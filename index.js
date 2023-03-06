@@ -4,7 +4,7 @@ const winSound = new Audio("./files/winSound.mp3");
 const SoundGreen = new Audio("./files/SoundGreen.mp3");
 const SoundGrayOrange = new Audio("./files/SoundGrayOrange.mp3");
 
-//this is array for storing already guessed words
+//this is array for storing all the letters of the current word
 let currentWordArr = [];
 
 //this variable is to check on which space will next letter go
@@ -13,6 +13,7 @@ let availSpace = 1;
 //avoidDeleteKey variable is to check for deletion before that particular row
 let avoidDeleteKey = 0;
 
+//Selecting random word from words.js file
 let word = words[Math.floor(Math.random() * words.length)];
 
 console.log(word);
@@ -75,19 +76,27 @@ function checkGuessedWord() {
   for (let i = 0; i < 5; i++) {
     setTimeout(function () {
       const letterOnGrid = document.getElementById(index);
+      
       console.log(letterOnGrid);
       let char = letterOnGrid.textContent;
+      console.log(char);
+      const letterOnKeyboard = document.getElementById(char);
+      console.log(letterOnKeyboard);
       console.log(word[i]);
       if (char == word[i]) {
-        SoundGreen.play();
         letterOnGrid.classList.add("green");
+        letterOnKeyboard.classList.remove("yellow");
+        letterOnKeyboard.classList.add("green");
+        SoundGreen.play();
       } else if (word.includes(char)) {
-        letterOnGrid.classList.add("yellow");
-        SoundGrayOrange.play();
-      } else {
-        letterOnGrid.classList.add("gray");
-        SoundGrayOrange.play();
-      }
+            letterOnGrid.classList.add("yellow");
+            letterOnKeyboard.classList.add("yellow");
+            SoundGrayOrange.play();
+            } else {
+                    letterOnGrid.classList.add("gray");
+                    letterOnKeyboard.classList.add("gray");
+                    SoundGrayOrange.play();
+                   }
       index += 1;
       console.log(char);
     }, i * 700);
@@ -121,7 +130,7 @@ function insertLetter(letter) {
   }
 }
 
-// To create board which has 5*6 squares to fill in letters
+// To create game board which has 5*6 squares to fill in letters
 function createGameBoard() {
   const board = document.getElementById("gameboard");
 

@@ -46,9 +46,9 @@ Shubha Agrawal
 [LinkedIn Profile](https://www.linkedin.com/in/shubha-jindal-agrawal-56778483/)
 
 # Resources:
-*[FreeCode Camp](https://www.freecodecamp.org/news/build-a-wordle-clone-in-javascript/)
-*[w3schools](https://www.w3schools.com/)
-*[Audio](https://www.storyblocks.com/audio/)
+* [FreeCode Camp](https://www.freecodecamp.org/news/build-a-wordle-clone-in-javascript/)
+* [w3schools](https://www.w3schools.com/)
+* [Audio](https://www.storyblocks.com/audio/)
 
 # Next Steps
 Next, I want to implement this game in mobile version as its more convenient to use for everybody.

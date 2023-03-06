@@ -43,7 +43,7 @@ Wordle can be played by everyone and can increase your thinking abilities and im
 Shubha Agrawal
 
 ![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)    
-[LinkedIn Profile](https://www.linkedin.com/in/shubha-jindal-agrawal-56778483/)
+[LinkedIn Profile](https://www.linkedin.com/in/shubha-jindal-agrawal/)
 
 # Resources:
 * [FreeCode Camp](https://www.freecodecamp.org/news/build-a-wordle-clone-in-javascript/)
